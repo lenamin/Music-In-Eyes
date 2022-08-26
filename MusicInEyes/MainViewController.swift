@@ -10,33 +10,43 @@ import UIKit
 class MainViewController: UIViewController {
     
     lazy var recordButton: UIButton = {
-        let buttom = UIButton()
+        let button = UIButton()
 
-        buttom.backgroundColor = .customNavy
-        buttom.layer.cornerRadius = (UIScreen.main.bounds.width * 0.2) / 2
-        buttom.layer.masksToBounds = false
-        buttom.layer.shadowRadius = 7.0
-        buttom.layer.shadowOpacity = 0.2
-        buttom.layer.borderColor = UIColor.customNavy.cgColor
-        buttom.layer.borderWidth = 5.0
+        button.backgroundColor = .customNavy
+        button.layer.cornerRadius = (UIScreen.main.bounds.width * 0.2) / 2
+        button.layer.masksToBounds = false
+        button.layer.shadowRadius = 7.0
+        button.layer.shadowOpacity = 0.2
+        button.layer.borderColor = UIColor.customNavy.cgColor
+        button.layer.borderWidth = 5.0
         
-        buttom.setImage(UIImage(systemName: "headphones"), for: .normal)
-        buttom.tintColor = .white
-        buttom.contentMode = .scaleAspectFill
-        buttom.contentVerticalAlignment = .fill
-        buttom.contentHorizontalAlignment = .fill
+        button.setImage(UIImage(systemName: "headphones"), for: .normal)
+        button.tintColor = .white
+        button.contentMode = .scaleAspectFill
+        button.contentVerticalAlignment = .fill
+        button.contentHorizontalAlignment = .fill
         
-        buttom.translatesAutoresizingMaskIntoConstraints = false
+        button.translatesAutoresizingMaskIntoConstraints = false
         
-        return buttom
+        return button
+    }()
+    
+    private var bottomRectangle: UIView = {
+        let view = UIView()
+        view.backgroundColor = .customLightGray
+        
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Music in Eyes"
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
+
         view.backgroundColor = .white
-        [recordButton].forEach { view.addSubview($0) }
+        [bottomRectangle].forEach { view.addSubview($0) }
+        bottomRectangle.addSubview(recordButton)
         configureConstraints()
         
     }
@@ -46,6 +56,12 @@ class MainViewController: UIViewController {
             recordButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIScreen.main.bounds.height / 15)])
+            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIScreen.main.bounds.height / 15),
+            
+            bottomRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            bottomRectangle.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+            bottomRectangle.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.2)
+        ])
     }
 }
