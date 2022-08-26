@@ -39,13 +39,33 @@ class MainViewController: UIViewController {
         return view
     }()
     
+    /*
+    private var contentLabel: UILabel = {
+        let label = UILabel()
+        label.text = "탭하여 ME하기"
+        label.font = .preferredFont(forTextStyle: .title3)
+        label.textAlignment = .center
+        label.textColor = .customBlack
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    */
+    
+    private var musicMoodImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Music in Eyes"
+        
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.tintColor = .customBlack
 
         view.backgroundColor = .white
-        [bottomRectangle].forEach { view.addSubview($0) }
+        [bottomRectangle, musicMoodImageView].forEach { view.addSubview($0) }
         bottomRectangle.addSubview(recordButton)
         configureConstraints()
         
@@ -53,6 +73,19 @@ class MainViewController: UIViewController {
     
     private func configureConstraints() {
         NSLayoutConstraint.activate([
+            
+            /*
+            contentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
+            contentLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            contentLabel.bottomAnchor.constraint(equalTo: recordButton.topAnchor, constant: -UIScreen.main.bounds.height * 0.2),
+            */
+            
+            musicMoodImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            musicMoodImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            musicMoodImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.8),
+            musicMoodImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.4),
+            
             recordButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -61,7 +94,7 @@ class MainViewController: UIViewController {
             bottomRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomRectangle.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             bottomRectangle.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.2)
+            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.18)
         ])
     }
 }
