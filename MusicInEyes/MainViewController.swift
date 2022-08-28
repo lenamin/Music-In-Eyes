@@ -11,6 +11,9 @@ import SoundAnalysis
 
 class MainViewController: UIViewController {
     
+    private var mic = MicrophoneMonitor(numberOfSamples: 1)
+    private var timer:Timer!
+    
     lazy var recordButton: ToggleButton = {
         
         let toggleButton = ToggleButton()
@@ -78,13 +81,17 @@ class MainViewController: UIViewController {
         [bottomRectangle, contentLabel, musicMoodImageView].forEach { view.addSubview($0) }
         bottomRectangle.addSubview(recordButton)
         configureConstraints()
-        
     }
     
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
             sender.setImage(UIImage(systemName: "stop.fill"), for: .normal)
-            startMoodAudioEngine()
+            timer = Timer.scheduledTimer(timeInterval: 3,
+                                         target: self,
+                                         selector: #selector(startMonitoring),
+                                         userInfo: nil,
+                                         repeats: true)
+            timer.fire()
         } else {
             sender.setImage(UIImage(systemName: "headphones"), for: .normal)
             audioEngine.stop()
@@ -115,6 +122,21 @@ class MainViewController: UIViewController {
             bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.18)
         ])
     }
+    
+    @objc func startMonitoring() {
+      print("sound level:", normalizeSoundLevel(level: mic.soundSamples.first!))
+        let soundLevel = normalizeSoundLevel(level: mic.soundSamples.first!)
+        if soundLevel > 60 {
+            startMoodAudioEngine()
+        } else {
+            audioEngine.stop()
+        }
+    }
+
+    private func normalizeSoundLevel(level: Float) -> CGFloat {
+        let level = max(0.2, CGFloat(level) + 50) / 2 // between 0.1 and 25
+        return CGFloat(level * (300 / 25)) // scaled to max at 300 (our height of our bar)
+    }
 }
 
 
@@ -122,8 +144,11 @@ extension MainViewController: MusicMoodClassifierDelegate {
     func displayPredictionResult(identifier: String, confidence: Double) {
         // 여기서 결과값 반환해서 이미지와 맞는 값 찾아주기
         DispatchQueue.main.async {
-            self.contentLabel.text = "mood Recognition: \(identifier)\nConfidence \(confidence)"
-            print("mood Recognition: \(identifier)\nConfidence \(confidence)")
+            if confidence > 80 {
+                let percentConfidence = String(format: "%.2f", confidence)
+                self.contentLabel.text = "mood Recognition: \(identifier)\n Confidence: \(percentConfidence)"
+                print("mood Recognition: \(identifier)\nConfidence: \(percentConfidence)")
+            }
         }
     }
 }
