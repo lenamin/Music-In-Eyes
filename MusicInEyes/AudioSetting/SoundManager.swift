@@ -15,6 +15,7 @@ var soundGenreClassifier = try! MusicGenreClassification()
 
 var inputFormat: AVAudioFormat!
 var analyzer: SNAudioStreamAnalyzer!
+
 var resultsObserver = ResultsObserver()
 let analysisQueue = DispatchQueue(label: "com.apple.AnalysisQueue")
 
@@ -27,22 +28,19 @@ protocol MusicGenreClassifierDelegate {
 }
 
 public func startMoodAudioEngine() {
-    //create stream analyzer request with the Sound Classifier
-    
     inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
     analyzer = SNAudioStreamAnalyzer(format: inputFormat)
     
     do {
         let request = try SNClassifySoundRequest(mlModel: soundMoodClassifier.model)
-        
         try analyzer.add(request, withObserver: resultsObserver)
-        
     } catch {
         print("Unable to prepare request: \(error.localizedDescription)")
-        return
     }
     
-    audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { buffer, time in
+    audioEngine.inputNode.reset()
+    audioEngine.inputNode.removeTap(onBus: 0)
+    audioEngine.inputNode.installTap(onBus: 0, bufferSize: 400, format: inputFormat) { buffer, time in
         analysisQueue.async {
             analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
         }
@@ -50,13 +48,15 @@ public func startMoodAudioEngine() {
     
     do {
         try audioEngine.start()
-    } catch( _) {
+        
+    } catch {
         print("error in starting the Audio Engine")
     }
 }
 
+
+/*
 public func startGenreAudioEngine() {
-    //create stream analyzer request with the Sound Classifier
     
     inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
     analyzer = SNAudioStreamAnalyzer(format: inputFormat)
@@ -83,5 +83,5 @@ public func startGenreAudioEngine() {
         print("error in starting the Audio Engine")
     }
 }
-
+*/
 
