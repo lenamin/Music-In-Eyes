@@ -10,7 +10,8 @@ import SoundAnalysis
 
 let audioEngine = AVAudioEngine()
 
-var soundClassifier = try! MusicMoodClassification()
+var soundMoodClassifier = try! MusicMoodClassification()
+var soundGenreClassifier = try! MusicGenreClassification()
 
 var inputFormat: AVAudioFormat!
 var analyzer: SNAudioStreamAnalyzer!
@@ -21,14 +22,18 @@ protocol MusicMoodClassifierDelegate {
     func displayPredictionResult(identifier: String, confidence: Double)
 }
 
-public func startAudioEngine() {
+protocol MusicGenreClassifierDelegate {
+    func displayPredictionResultGenre(identifier: String, confidence: Double)
+}
+
+public func startMoodAudioEngine() {
     //create stream analyzer request with the Sound Classifier
     
     inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
     analyzer = SNAudioStreamAnalyzer(format: inputFormat)
     
     do {
-        let request = try SNClassifySoundRequest(mlModel: soundClassifier.model)
+        let request = try SNClassifySoundRequest(mlModel: soundMoodClassifier.model)
         
         try analyzer.add(request, withObserver: resultsObserver)
         
@@ -50,21 +55,33 @@ public func startAudioEngine() {
     }
 }
 
-class ResultsObserver: NSObject, SNResultsObserving {
-    var delegate: MusicMoodClassifierDelegate?
+public func startGenreAudioEngine() {
+    //create stream analyzer request with the Sound Classifier
     
-    func request(_ request: SNRequest, didProduce result: SNResult) {
-        guard let result = result as? SNClassificationResult,
-            let classification = result.classifications.first else { return }
+    inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
+    analyzer = SNAudioStreamAnalyzer(format: inputFormat)
+    
+    do {
+        let request = try SNClassifySoundRequest(mlModel: soundGenreClassifier.model)
         
-        let confidence = classification.confidence * 100.0
+        try analyzer.add(request, withObserver: resultsObserver)
         
-        if confidence > 60 {
-            delegate?.displayPredictionResult(identifier: classification.identifier,
-                                              confidence: confidence)
+    } catch {
+        print("Unable to prepare request: \(error.localizedDescription)")
+        return
+    }
+    
+    audioEngine.inputNode.installTap(onBus: 0, bufferSize: 8000, format: inputFormat) { buffer, time in
+        analysisQueue.async {
+            analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
         }
     }
+    
+    do {
+        try audioEngine.start()
+    } catch( _) {
+        print("error in starting the Audio Engine")
+    }
 }
-
 
 
