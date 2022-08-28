@@ -8,13 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71728BB4D9C0029861E /* ToggleButton.swift */; };
+		BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71928BB9C5D0029861E /* Microphone.swift */; };
 		BFC1B35128B8A06E00DBA954 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1B35028B8A06E00DBA954 /* SoundManager.swift */; };
 		BFC1B35528B8A1BD00DBA954 /* MusicMoodClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFC1B35428B8A1BD00DBA954 /* MusicMoodClassification.mlmodel */; };
 		BFC1B35728B8E02A00DBA954 /* MusicGenreClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BFC1B35628B8E02A00DBA954 /* MusicGenreClassification.mlmodel */; };
 		BFC1B35928B8E6D500DBA954 /* ResultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1B35828B8E6D500DBA954 /* ResultsObserver.swift */; };
 		BFCA6BB028B84B3E00EA6261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA6BAF28B84B3E00EA6261 /* AppDelegate.swift */; };
 		BFCA6BB228B84B3E00EA6261 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA6BB128B84B3E00EA6261 /* SceneDelegate.swift */; };
-		BFCA6BB428B84B3E00EA6261 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA6BB328B84B3E00EA6261 /* ViewController.swift */; };
 		BFCA6BB928B84B4100EA6261 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BFCA6BB828B84B4100EA6261 /* Assets.xcassets */; };
 		BFCA6BBC28B84B4100EA6261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCA6BBA28B84B4100EA6261 /* LaunchScreen.storyboard */; };
 		BFCA6BC428B85D5000EA6261 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA6BC328B85D5000EA6261 /* MainViewController.swift */; };
@@ -23,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		BF4EB71728BB4D9C0029861E /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
+		BF4EB71928BB9C5D0029861E /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
 		BFC1B35028B8A06E00DBA954 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		BFC1B35428B8A1BD00DBA954 /* MusicMoodClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicMoodClassification.mlmodel; sourceTree = "<group>"; };
 		BFC1B35628B8E02A00DBA954 /* MusicGenreClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicGenreClassification.mlmodel; sourceTree = "<group>"; };
@@ -30,7 +31,6 @@
 		BFCA6BAC28B84B3E00EA6261 /* MusicInEyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicInEyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCA6BAF28B84B3E00EA6261 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BFCA6BB128B84B3E00EA6261 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BFCA6BB328B84B3E00EA6261 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BFCA6BB828B84B4100EA6261 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BFCA6BBB28B84B4100EA6261 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BFCA6BBD28B84B4100EA6261 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +49,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF4EB71B28BBA0400029861E /* AudioSetting */ = {
+			isa = PBXGroup;
+			children = (
+				BFC1B35028B8A06E00DBA954 /* SoundManager.swift */,
+				BF4EB71928BB9C5D0029861E /* Microphone.swift */,
+				BFC1B35828B8E6D500DBA954 /* ResultsObserver.swift */,
+			);
+			path = AudioSetting;
+			sourceTree = "<group>";
+		};
 		BFCA6BA328B84B3E00EA6261 = {
 			isa = PBXGroup;
 			children = (
@@ -68,18 +78,16 @@
 		BFCA6BAE28B84B3E00EA6261 /* MusicInEyes */ = {
 			isa = PBXGroup;
 			children = (
+				BFCA6BC328B85D5000EA6261 /* MainViewController.swift */,
+				BF4EB71B28BBA0400029861E /* AudioSetting */,
 				BFCA6BC528B86BF500EA6261 /* Extensions */,
 				BFCA6BAF28B84B3E00EA6261 /* AppDelegate.swift */,
 				BFCA6BB128B84B3E00EA6261 /* SceneDelegate.swift */,
-				BFCA6BB328B84B3E00EA6261 /* ViewController.swift */,
-				BFCA6BC328B85D5000EA6261 /* MainViewController.swift */,
 				BFCA6BB828B84B4100EA6261 /* Assets.xcassets */,
 				BFCA6BBA28B84B4100EA6261 /* LaunchScreen.storyboard */,
 				BFCA6BBD28B84B4100EA6261 /* Info.plist */,
-				BFC1B35028B8A06E00DBA954 /* SoundManager.swift */,
 				BFC1B35428B8A1BD00DBA954 /* MusicMoodClassification.mlmodel */,
 				BFC1B35628B8E02A00DBA954 /* MusicGenreClassification.mlmodel */,
-				BFC1B35828B8E6D500DBA954 /* ResultsObserver.swift */,
 			);
 			path = MusicInEyes;
 			sourceTree = "<group>";
@@ -163,7 +171,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BFCA6BB428B84B3E00EA6261 /* ViewController.swift in Sources */,
 				BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */,
 				BFF6736928B86CF800B456E2 /* Colors.swift in Sources */,
 				BFCA6BB028B84B3E00EA6261 /* AppDelegate.swift in Sources */,
@@ -171,6 +178,7 @@
 				BFC1B35728B8E02A00DBA954 /* MusicGenreClassification.mlmodel in Sources */,
 				BFC1B35528B8A1BD00DBA954 /* MusicMoodClassification.mlmodel in Sources */,
 				BFC1B35928B8E6D500DBA954 /* ResultsObserver.swift in Sources */,
+				BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */,
 				BFCA6BC428B85D5000EA6261 /* MainViewController.swift in Sources */,
 				BFC1B35128B8A06E00DBA954 /* SoundManager.swift in Sources */,
 			);
