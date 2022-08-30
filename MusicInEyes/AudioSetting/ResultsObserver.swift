@@ -10,7 +10,6 @@ import SoundAnalysis
 
 class ResultsObserver: NSObject, SNResultsObserving {
     var moodDelegate: MusicMoodClassifierDelegate?
-    var genreDelegate: MusicGenreClassifierDelegate?
     
     func request(_ request: SNRequest, didProduce result: SNResult) {
         
@@ -31,7 +30,6 @@ class ResultsObserver: NSObject, SNResultsObserving {
                                                       confidence: results.first?.confidence ?? Double())
             }
         }
-        //            genreDelegate?.displayPredictionResultGenre(identifier: classification.identifier, confidence: confidence)
     }
     
     func request(_ request: SNRequest, didFailWithError error: Error) {
