@@ -124,30 +124,18 @@ class MainViewController: UIViewController {
     }
     
     @objc func startMonitoring() {
-      print("sound level:", normalizeSoundLevel(level: mic.soundSamples.first!))
-        let soundLevel = normalizeSoundLevel(level: mic.soundSamples.first!)
-        if soundLevel > 60 {
-            startMoodAudioEngine()
-        } else {
-            audioEngine.stop()
-        }
-    }
-
-    private func normalizeSoundLevel(level: Float) -> CGFloat {
-        let level = max(0.2, CGFloat(level) + 50) / 2 // between 0.1 and 25
-        return CGFloat(level * (300 / 25)) // scaled to max at 300 (our height of our bar)
+        startMoodAudioEngine()
     }
 }
 
-
 extension MainViewController: MusicMoodClassifierDelegate {
     func displayPredictionResult(identifier: String, confidence: Double) {
-        // 여기서 결과값 반환해서 이미지와 맞는 값 찾아주기
+        // TODO: 여기서 결과값 반환해서 이미지와 맞는 값 찾아주기
         DispatchQueue.main.async {
-            if confidence > 80 {
+            print("mood Recognition: \(identifier)\nConfidence: \(confidence)")
+            if identifier != "non-music" {
                 let percentConfidence = String(format: "%.2f", confidence)
                 self.contentLabel.text = "mood Recognition: \(identifier)\n Confidence: \(percentConfidence)"
-                print("mood Recognition: \(identifier)\nConfidence: \(percentConfidence)")
             }
         }
     }
