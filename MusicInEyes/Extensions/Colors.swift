@@ -35,6 +35,6 @@ extension UIColor {
     }
     
     static var customLightGray: UIColor {
-        return UIColor(rgb: 0xEFEFEF)
+        return UIColor(rgb: 0xDCDCDC)
     }
 }
