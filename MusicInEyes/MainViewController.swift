@@ -10,9 +10,8 @@ import AVKit
 import SoundAnalysis
 
 class MainViewController: UIViewController {
-    
-    private var mic = MicrophoneMonitor(numberOfSamples: 1)
     private var timer:Timer!
+    private var query: String?
     
     lazy var recordButton: ToggleButton = {
         
@@ -39,19 +38,17 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    private var contentLabel: UILabel = {
-        let label = UILabel()
-        label.text = "탭하여 ME하기"
-        label.numberOfLines = 0
-        label.font = .preferredFont(forTextStyle: .title3)
-        label.textAlignment = .center
-        label.textColor = .customBlack
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
+    private var contentLabelImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: "content-label")
+        imageView.contentMode = .scaleAspectFit
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
     }()
     
-    private var musicMoodImageView: UIImageView = {
-        let imageView = UIImageView()
+    lazy var musicMoodImageView: UnsplashImageView = {
+        let imageView = UnsplashImageView()
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -66,7 +63,7 @@ class MainViewController: UIViewController {
         resultsObserver.moodDelegate = self
         
         view.backgroundColor = .white
-        [bottomRectangle, contentLabel, musicMoodImageView].forEach { view.addSubview($0) }
+        [bottomRectangle, contentLabelImage, musicMoodImageView].forEach { view.addSubview($0) }
         bottomRectangle.addSubview(recordButton)
         configureConstraints()
     }
@@ -98,25 +95,26 @@ class MainViewController: UIViewController {
     private func configureConstraints() {
         NSLayoutConstraint.activate([
             
-            contentLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentLabel.widthAnchor.constraint(equalTo: view.widthAnchor),
-            contentLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            contentLabel.bottomAnchor.constraint(equalTo: recordButton.topAnchor, constant: -UIScreen.main.bounds.height * 0.2),
+            contentLabelImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentLabelImage.widthAnchor.constraint(equalToConstant:  UIScreen.main.bounds.width * 0.5),
+            contentLabelImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            contentLabelImage.bottomAnchor.constraint(equalTo: recordButton.topAnchor, constant: -UIScreen.main.bounds.height * 0.2),
             
             musicMoodImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             musicMoodImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-            musicMoodImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.8),
-            musicMoodImageView.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.4),
-            
+            musicMoodImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            musicMoodImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            musicMoodImageView.bottomAnchor.constraint(equalTo: bottomRectangle.topAnchor),
+
             recordButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIScreen.main.bounds.height / 15),
+            recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIScreen.main.bounds.height / 22),
             
             bottomRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomRectangle.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             bottomRectangle.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.18)
+            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.15)
         ])
     }
     
