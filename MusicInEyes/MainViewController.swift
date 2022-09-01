@@ -17,22 +17,10 @@ class MainViewController: UIViewController {
     lazy var recordButton: ToggleButton = {
         
         let toggleButton = ToggleButton()
-        toggleButton.stopImage = UIImage(systemName: "stop.fill")
-        toggleButton.playImage = UIImage(systemName: "headphones")
+        toggleButton.stopImage = UIImage(named: "stop-image")
+        toggleButton.playImage = UIImage(named: "listen-image")
         toggleButton.setTitleColor(.white, for: .normal)
         toggleButton.tintColor = .white
-        toggleButton.backgroundColor = .customNavy
-        
-        toggleButton.layer.cornerRadius = (UIScreen.main.bounds.width * 0.2) / 2
-        toggleButton.layer.masksToBounds = false
-        toggleButton.layer.shadowRadius = 7.0
-        toggleButton.layer.shadowOpacity = 0.2
-        toggleButton.layer.borderColor = UIColor.customNavy.cgColor
-        toggleButton.layer.borderWidth = 5.0
-        
-//        toggleButton.contentMode = .scaleAspectFill
-//        toggleButton.contentVerticalAlignment = .fill
-//        toggleButton.contentHorizontalAlignment = .fill
         
         toggleButton.translatesAutoresizingMaskIntoConstraints = false
         
@@ -85,17 +73,26 @@ class MainViewController: UIViewController {
     
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
-            sender.setImage(UIImage(systemName: "stop.fill"), for: .normal)
+            print("tapped on!")
+            sender.setImage(UIImage(named: "stop-image"), for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 3,
                                          target: self,
                                          selector: #selector(startMonitoring),
                                          userInfo: nil,
                                          repeats: true)
+            timer = Timer.scheduledTimer(timeInterval: 3,
+                                         target: self,
+                                         selector: #selector(startFetchImages),
+                                         userInfo: nil,
+                                         repeats: true)
             timer.fire()
         } else {
-            sender.setImage(UIImage(systemName: "headphones"), for: .normal)
+            print("tapped off")
+            sender.setImage(UIImage(named: "listen-image"), for: .normal)
             audioEngine.stop()
+            musicMoodImageView.image = nil
         }
+        
     }
     
     private func configureConstraints() {
