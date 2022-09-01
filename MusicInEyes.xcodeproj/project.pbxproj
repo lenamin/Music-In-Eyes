@@ -9,10 +9,10 @@
 /* Begin PBXBuildFile section */
 		BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71728BB4D9C0029861E /* ToggleButton.swift */; };
 		BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71928BB9C5D0029861E /* Microphone.swift */; };
-		BF6BE7C828BC4C3E00C44E2B /* MoodImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE7C728BC4C3E00C44E2B /* MoodImage.swift */; };
-		BF6BE7CB28BC4DA600C44E2B /* ImageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF6BE7CA28BC4DA600C44E2B /* ImageViewModel.swift */; };
 		BF96451728BDA47E0033A7AD /* UnsplashPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF96451628BDA47E0033A7AD /* UnsplashPhotoPicker */; };
 		BF96451D28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */; };
+		BF96452128BEF2340033A7AD /* UnsplashImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96452028BEF2340033A7AD /* UnsplashImageView.swift */; };
+		BF96452328BEF5200033A7AD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96452228BEF5200033A7AD /* API.swift */; };
 		BFC1B35128B8A06E00DBA954 /* SoundManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1B35028B8A06E00DBA954 /* SoundManager.swift */; };
 		BFC1B35928B8E6D500DBA954 /* ResultsObserver.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFC1B35828B8E6D500DBA954 /* ResultsObserver.swift */; };
 		BFCA6BB028B84B3E00EA6261 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA6BAF28B84B3E00EA6261 /* AppDelegate.swift */; };
@@ -26,9 +26,9 @@
 /* Begin PBXFileReference section */
 		BF4EB71728BB4D9C0029861E /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		BF4EB71928BB9C5D0029861E /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
-		BF6BE7C728BC4C3E00C44E2B /* MoodImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoodImage.swift; sourceTree = "<group>"; };
-		BF6BE7CA28BC4DA600C44E2B /* ImageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewModel.swift; sourceTree = "<group>"; };
 		BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicMoodClassification.mlmodel; sourceTree = "<group>"; };
+		BF96452028BEF2340033A7AD /* UnsplashImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageView.swift; sourceTree = "<group>"; };
+		BF96452228BEF5200033A7AD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		BFC1B35028B8A06E00DBA954 /* SoundManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SoundManager.swift; sourceTree = "<group>"; };
 		BFC1B35828B8E6D500DBA954 /* ResultsObserver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsObserver.swift; sourceTree = "<group>"; };
 		BFCA6BAC28B84B3E00EA6261 /* MusicInEyes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicInEyes.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,18 +66,10 @@
 		BF6BE7C628BC4C2200C44E2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BF96452228BEF5200033A7AD /* API.swift */,
 				BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */,
-				BF6BE7C728BC4C3E00C44E2B /* MoodImage.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		BF6BE7C928BC4D9400C44E2B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				BF6BE7CA28BC4DA600C44E2B /* ImageViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		BFCA6BA328B84B3E00EA6261 = {
@@ -99,9 +91,8 @@
 		BFCA6BAE28B84B3E00EA6261 /* MusicInEyes */ = {
 			isa = PBXGroup;
 			children = (
-				BF6BE7C928BC4D9400C44E2B /* ViewModel */,
+				BFF7393A28BF2DC400B5719E /* View */,
 				BF6BE7C628BC4C2200C44E2B /* Model */,
-				BFCA6BC328B85D5000EA6261 /* MainViewController.swift */,
 				BF4EB71B28BBA0400029861E /* AudioSetting */,
 				BFCA6BC528B86BF500EA6261 /* Extensions */,
 				BFCA6BAF28B84B3E00EA6261 /* AppDelegate.swift */,
@@ -120,6 +111,15 @@
 				BF4EB71728BB4D9C0029861E /* ToggleButton.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		BFF7393A28BF2DC400B5719E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BFCA6BC328B85D5000EA6261 /* MainViewController.swift */,
+				BF96452028BEF2340033A7AD /* UnsplashImageView.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,15 +200,15 @@
 			files = (
 				BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */,
 				BFF6736928B86CF800B456E2 /* Colors.swift in Sources */,
+				BF96452128BEF2340033A7AD /* UnsplashImageView.swift in Sources */,
 				BFCA6BB028B84B3E00EA6261 /* AppDelegate.swift in Sources */,
 				BFCA6BB228B84B3E00EA6261 /* SceneDelegate.swift in Sources */,
-				BF6BE7CB28BC4DA600C44E2B /* ImageViewModel.swift in Sources */,
 				BFC1B35928B8E6D500DBA954 /* ResultsObserver.swift in Sources */,
 				BF96451D28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel in Sources */,
+				BF96452328BEF5200033A7AD /* API.swift in Sources */,
 				BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */,
 				BFCA6BC428B85D5000EA6261 /* MainViewController.swift in Sources */,
 				BFC1B35128B8A06E00DBA954 /* SoundManager.swift in Sources */,
-				BF6BE7C828BC4C3E00C44E2B /* MoodImage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
