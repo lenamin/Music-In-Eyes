@@ -22,10 +22,6 @@ protocol MusicMoodClassifierDelegate {
     func displayPredictionResult(identifier: String, confidence: Double)
 }
 
-protocol MusicGenreClassifierDelegate {
-    func displayPredictionResultGenre(identifier: String, confidence: Double)
-}
-
 public func startMoodAudioEngine() {
     inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
     analyzer = SNAudioStreamAnalyzer(format: inputFormat)
