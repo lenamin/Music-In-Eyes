@@ -121,16 +121,32 @@ class MainViewController: UIViewController {
     @objc func startMonitoring() {
         startMoodAudioEngine()
     }
+    
+    @objc func startFetchImages() {
+        self.musicMoodImageView.query = self.query ?? String()
+        self.musicMoodImageView.fetchPhoto()
+        print("successfully fetched!: \(self.musicMoodImageView.query)")
+    }
 }
 
 extension MainViewController: MusicMoodClassifierDelegate {
     func displayPredictionResult(identifier: String, confidence: Double) {
-        // TODO: 여기서 결과값 반환해서 이미지와 맞는 값 찾아주기
+        
+        let percentConfidence = String(format: "%.2f", confidence)
+        print(identifier, percentConfidence)
+        
         DispatchQueue.main.async {
-            print("mood Recognition: \(identifier)\nConfidence: \(confidence)")
             if identifier != "non-music" {
-                let percentConfidence = String(format: "%.2f", confidence)
-                self.contentLabel.text = "mood Recognition: \(identifier)\n Confidence: \(percentConfidence)"
+                self.query = identifier
+                print("displayPredictionResult 에 있는 query야 : \(self.query ?? String())")
+//                if let query = self.query {
+//                    self.musicMoodImageView.query = query
+//                    print("query: \(query)")
+//                }
+//                self.musicMoodImageView.fetchPhoto()
+            } else {
+                
+                print("I'm non-music")
             }
         }
     }
