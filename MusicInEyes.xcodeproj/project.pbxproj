@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71728BB4D9C0029861E /* ToggleButton.swift */; };
 		BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71928BB9C5D0029861E /* Microphone.swift */; };
-		BF96451728BDA47E0033A7AD /* UnsplashPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF96451628BDA47E0033A7AD /* UnsplashPhotoPicker */; };
+		BF9336A228C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */; };
 		BF96451D28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */; };
 		BF96452128BEF2340033A7AD /* UnsplashImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96452028BEF2340033A7AD /* UnsplashImageView.swift */; };
 		BF96452328BEF5200033A7AD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96452228BEF5200033A7AD /* API.swift */; };
@@ -21,15 +21,12 @@
 		BFCA6BBC28B84B4100EA6261 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BFCA6BBA28B84B4100EA6261 /* LaunchScreen.storyboard */; };
 		BFCA6BC428B85D5000EA6261 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFCA6BC328B85D5000EA6261 /* MainViewController.swift */; };
 		BFF6736928B86CF800B456E2 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF6736828B86CF800B456E2 /* Colors.swift */; };
-		EC3A6A90FB2C516A8BF5CBF7 /* Pods_MusicInEyes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB4EC84B43CA0927A53257C7 /* Pods_MusicInEyes.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3EF9A354FA09368F35585127 /* Pods-MusicInEyes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicInEyes.debug.xcconfig"; path = "Target Support Files/Pods-MusicInEyes/Pods-MusicInEyes.debug.xcconfig"; sourceTree = "<group>"; };
-		9E1AA4164E2BFFB6E8362300 /* Pods-MusicInEyes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MusicInEyes.release.xcconfig"; path = "Target Support Files/Pods-MusicInEyes/Pods-MusicInEyes.release.xcconfig"; sourceTree = "<group>"; };
-		AB4EC84B43CA0927A53257C7 /* Pods_MusicInEyes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MusicInEyes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4EB71728BB4D9C0029861E /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		BF4EB71928BB9C5D0029861E /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
+		BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+MusicMoodClassifierDelegate.swift"; sourceTree = "<group>"; };
 		BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicMoodClassification.mlmodel; sourceTree = "<group>"; };
 		BF96452028BEF2340033A7AD /* UnsplashImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageView.swift; sourceTree = "<group>"; };
 		BF96452228BEF5200033A7AD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -45,37 +42,7 @@
 		BFF6736828B86CF800B456E2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
-/* Begin PBXFrameworksBuildPhase section */
-		BFCA6BA928B84B3E00EA6261 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF96451728BDA47E0033A7AD /* UnsplashPhotoPicker in Frameworks */,
-				EC3A6A90FB2C516A8BF5CBF7 /* Pods_MusicInEyes.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
-
 /* Begin PBXGroup section */
-		4653F9BC5136CAFE0F0DEFE6 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				AB4EC84B43CA0927A53257C7 /* Pods_MusicInEyes.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A1992CEA5DC45908C8A23604 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				3EF9A354FA09368F35585127 /* Pods-MusicInEyes.debug.xcconfig */,
-				9E1AA4164E2BFFB6E8362300 /* Pods-MusicInEyes.release.xcconfig */,
-			);
-			name = Pods;
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		BF4EB71B28BBA0400029861E /* AudioSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,8 +67,6 @@
 			children = (
 				BFCA6BAE28B84B3E00EA6261 /* MusicInEyes */,
 				BFCA6BAD28B84B3E00EA6261 /* Products */,
-				A1992CEA5DC45908C8A23604 /* Pods */,
-				4653F9BC5136CAFE0F0DEFE6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -142,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCA6BC328B85D5000EA6261 /* MainViewController.swift */,
+				BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */,
 				BF96452028BEF2340033A7AD /* UnsplashImageView.swift */,
 			);
 			path = View;
@@ -154,11 +120,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BFCA6BC028B84B4100EA6261 /* Build configuration list for PBXNativeTarget "MusicInEyes" */;
 			buildPhases = (
-				7DC8280DA78FCA067B8C57E9 /* [CP] Check Pods Manifest.lock */,
 				BFCA6BA828B84B3E00EA6261 /* Sources */,
-				BFCA6BA928B84B3E00EA6261 /* Frameworks */,
 				BFCA6BAA28B84B3E00EA6261 /* Resources */,
-				07987A6398CC14141B97A36B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -197,7 +160,7 @@
 			);
 			mainGroup = BFCA6BA328B84B3E00EA6261;
 			packageReferences = (
-				BF96451528BDA47E0033A7AD /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios.git" */,
+				BF96451528BDA47E0033A7AD /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios" */,
 			);
 			productRefGroup = BFCA6BAD28B84B3E00EA6261 /* Products */;
 			projectDirPath = "";
@@ -220,48 +183,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		07987A6398CC14141B97A36B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MusicInEyes/Pods-MusicInEyes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-MusicInEyes/Pods-MusicInEyes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MusicInEyes/Pods-MusicInEyes-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		7DC8280DA78FCA067B8C57E9 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-MusicInEyes-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BFCA6BA828B84B3E00EA6261 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -276,6 +197,7 @@
 				BF96451D28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel in Sources */,
 				BF96452328BEF5200033A7AD /* API.swift in Sources */,
 				BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */,
+				BF9336A228C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift in Sources */,
 				BFCA6BC428B85D5000EA6261 /* MainViewController.swift in Sources */,
 				BFC1B35128B8A06E00DBA954 /* SoundManager.swift in Sources */,
 			);
@@ -411,7 +333,6 @@
 		};
 		BFCA6BC128B84B4100EA6261 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3EF9A354FA09368F35585127 /* Pods-MusicInEyes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -439,7 +360,6 @@
 		};
 		BFCA6BC228B84B4100EA6261 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9E1AA4164E2BFFB6E8362300 /* Pods-MusicInEyes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -489,7 +409,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		BF96451528BDA47E0033A7AD /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios.git" */ = {
+		BF96451528BDA47E0033A7AD /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/unsplash/unsplash-photopicker-ios.git";
 			requirement = {
@@ -502,7 +422,7 @@
 /* Begin XCSwiftPackageProductDependency section */
 		BF96451628BDA47E0033A7AD /* UnsplashPhotoPicker */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = BF96451528BDA47E0033A7AD /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios.git" */;
+			package = BF96451528BDA47E0033A7AD /* XCRemoteSwiftPackageReference "unsplash-photopicker-ios" */;
 			productName = UnsplashPhotoPicker;
 		};
 /* End XCSwiftPackageProductDependency section */
