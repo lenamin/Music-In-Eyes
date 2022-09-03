@@ -30,6 +30,7 @@ class ToggleButton: UIButton {
         if isOn {
             if let stopImage = stopImage {
                 setImage(stopImage, for: .normal)
+                
             }
         } else {
             if let playImage = playImage {

@@ -10,8 +10,8 @@ import AVKit
 import SoundAnalysis
 
 class MainViewController: UIViewController {
-    private var timer:Timer!
-    private var query: String?
+    public var timer:Timer!
+    @Published public var query: String?
     
     lazy var recordButton: ToggleButton = {
         
@@ -45,10 +45,10 @@ class MainViewController: UIViewController {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
-    
-    lazy var musicMoodImageView: UnsplashImageView = {
+
+    public var musicMoodImageView: UnsplashImageView = {
         let imageView = UnsplashImageView()
-        imageView.contentMode = .scaleAspectFill
+        imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -56,12 +56,11 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Music in Eyes"
-        
+        navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .customBlack
 
         resultsObserver.moodDelegate = self
-        
         view.backgroundColor = .white
         [bottomRectangle, contentLabelImage, musicMoodImageView].forEach { view.addSubview($0) }
         bottomRectangle.addSubview(recordButton)
@@ -71,25 +70,19 @@ class MainViewController: UIViewController {
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
             print("tapped on!")
-            sender.setImage(UIImage(named: "stop-image"), for: .normal)
+            sender.setImage(sender.stopImage, for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 3,
                                          target: self,
                                          selector: #selector(startMonitoring),
                                          userInfo: nil,
                                          repeats: true)
-            timer = Timer.scheduledTimer(timeInterval: 3,
-                                         target: self,
-                                         selector: #selector(startFetchImages),
-                                         userInfo: nil,
-                                         repeats: true)
             timer.fire()
         } else {
-            print("tapped off")
-            sender.setImage(UIImage(named: "listen-image"), for: .normal)
-            audioEngine.stop()
+            sender.setImage(sender.playImage, for: .normal)
+            stopMonitoring()
             musicMoodImageView.image = nil
+            print("tapped off")
         }
-        
     }
     
     private func configureConstraints() {
@@ -105,7 +98,7 @@ class MainViewController: UIViewController {
             musicMoodImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             musicMoodImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             musicMoodImageView.bottomAnchor.constraint(equalTo: bottomRectangle.topAnchor),
-
+        
             recordButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -114,7 +107,7 @@ class MainViewController: UIViewController {
             bottomRectangle.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             bottomRectangle.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             bottomRectangle.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
-            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.15)
+            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.16)
         ])
     }
     
@@ -122,32 +115,8 @@ class MainViewController: UIViewController {
         startMoodAudioEngine()
     }
     
-    @objc func startFetchImages() {
-        self.musicMoodImageView.query = self.query ?? String()
-        self.musicMoodImageView.fetchPhoto()
-        print("successfully fetched!: \(self.musicMoodImageView.query)")
+    func stopMonitoring() {
+        stopMoodAudioEngine()
     }
 }
 
-extension MainViewController: MusicMoodClassifierDelegate {
-    func displayPredictionResult(identifier: String, confidence: Double) {
-        
-        let percentConfidence = String(format: "%.2f", confidence)
-        print(identifier, percentConfidence)
-        
-        DispatchQueue.main.async {
-            if identifier != "non-music" {
-                self.query = identifier
-                print("displayPredictionResult 에 있는 query야 : \(self.query ?? String())")
-//                if let query = self.query {
-//                    self.musicMoodImageView.query = query
-//                    print("query: \(query)")
-//                }
-//                self.musicMoodImageView.fetchPhoto()
-            } else {
-                
-                print("I'm non-music")
-            }
-        }
-    }
-}

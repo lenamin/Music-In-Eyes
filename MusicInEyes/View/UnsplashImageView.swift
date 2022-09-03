@@ -25,7 +25,7 @@ public class UnsplashImageView: UIImageView {
             fetchImage(with: imageURL)
             return
         }
-
+        
         guard photoDataTask == nil, let urlRequest = photoURLRequest() else { return }
 
         photoDataTask = URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, _, error) in
@@ -72,9 +72,13 @@ public class UnsplashImageView: UIImageView {
             UnsplashImageView.cache.storeCachedResponse(cachedResponse, for: URLRequest(url: url))
 
             DispatchQueue.main.async {
-                UIView.transition(with: strongSelf, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                UIView.transition(with: strongSelf,
+                                  duration: 0.25,
+                                  options: [.transitionCrossDissolve],
+                                  animations: {
                     strongSelf.image = image
-                }, completion: nil)
+                },
+                                  completion: nil)
             }
         }
         imageDataTask?.resume()
@@ -90,6 +94,7 @@ public class UnsplashImageView: UIImageView {
         print("나는 UnsplashImageView에 있는 query: \(query)")
 
         guard let url = components.url else { return nil }
+        print("components.url: \(components.url)")
 
         var request = URLRequest(url: url)
         request.addValue("Client-ID \(accessKey)", forHTTPHeaderField: "Authorization")

@@ -8,10 +8,9 @@
 import AVKit
 import SoundAnalysis
 
-let audioEngine = AVAudioEngine()
-
 var soundMoodClassifier = try! MusicMoodClassification()
 
+let audioEngine = AVAudioEngine()
 var inputFormat: AVAudioFormat!
 var analyzer: SNAudioStreamAnalyzer!
 
@@ -49,3 +48,7 @@ public func startMoodAudioEngine() {
     }
 }
 
+public func stopMoodAudioEngine() {
+    audioEngine.stop()
+    audioEngine.reset()
+}
