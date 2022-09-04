@@ -13,19 +13,17 @@ import os
 import UIKit
 
 public class UnsplashImageView: UIImageView {
-
+    
     // MARK: - Public properties
     public var query: String = ""
-        
     var imageURL: URL?
 
     // MARK: - Public functions
     public func fetchPhoto() {
         if let imageURL = imageURL {
             fetchImage(with: imageURL)
-            return
         }
-
+        
         guard photoDataTask == nil, let urlRequest = photoURLRequest() else { return }
 
         photoDataTask = URLSession.shared.dataTask(with: urlRequest) { [weak self] (data, _, error) in
@@ -72,9 +70,13 @@ public class UnsplashImageView: UIImageView {
             UnsplashImageView.cache.storeCachedResponse(cachedResponse, for: URLRequest(url: url))
 
             DispatchQueue.main.async {
-                UIView.transition(with: strongSelf, duration: 0.25, options: [.transitionCrossDissolve], animations: {
+                UIView.transition(with: strongSelf,
+                                  duration: 0.25,
+                                  options: [.transitionCrossDissolve],
+                                  animations: {
                     strongSelf.image = image
-                }, completion: nil)
+                },
+                                  completion: nil)
             }
         }
         imageDataTask?.resume()
@@ -90,6 +92,7 @@ public class UnsplashImageView: UIImageView {
         print("나는 UnsplashImageView에 있는 query: \(query)")
 
         guard let url = components.url else { return nil }
+        print("components.url: \(String(describing: components.url))")
 
         var request = URLRequest(url: url)
         request.addValue("Client-ID \(accessKey)", forHTTPHeaderField: "Authorization")
@@ -107,7 +110,7 @@ public class UnsplashImageView: UIImageView {
                 return sizedImageURL(from: url)
             }
         } catch {
-            os_log("%@", log: .default, type: .error, error.localizedDescription)
+            os_log("%@", log: .default, type: .error, String(describing: error))
         }
         return nil
     }
@@ -126,7 +129,6 @@ public class UnsplashImageView: UIImageView {
             URLQueryItem(name: "max-h", value: "\(height)")
             ])
     }
-
 }
 
 // MARK: - URL extension

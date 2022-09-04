@@ -8,10 +8,9 @@
 import AVKit
 import SoundAnalysis
 
-let audioEngine = AVAudioEngine()
-
 var soundMoodClassifier = try! MusicMoodClassification()
 
+let audioEngine = AVAudioEngine()
 var inputFormat: AVAudioFormat!
 var analyzer: SNAudioStreamAnalyzer!
 
@@ -30,7 +29,7 @@ public func startMoodAudioEngine() {
         let request = try SNClassifySoundRequest(mlModel: soundMoodClassifier.model)
         try analyzer.add(request, withObserver: resultsObserver)
     } catch {
-        print("Unable to prepare request: \(error.localizedDescription)")
+        print(String(describing: error))
     }
     
     audioEngine.inputNode.reset()
@@ -49,3 +48,11 @@ public func startMoodAudioEngine() {
     }
 }
 
+public func stopMoodAudioEngine() {
+    inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
+    analyzer = SNAudioStreamAnalyzer(format: inputFormat)
+
+    if audioEngine.isRunning {
+        audioEngine.stop()
+    }
+}

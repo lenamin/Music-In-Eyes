@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71728BB4D9C0029861E /* ToggleButton.swift */; };
 		BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71928BB9C5D0029861E /* Microphone.swift */; };
-		BF96451728BDA47E0033A7AD /* UnsplashPhotoPicker in Frameworks */ = {isa = PBXBuildFile; productRef = BF96451628BDA47E0033A7AD /* UnsplashPhotoPicker */; };
+		BF9336A228C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */; };
 		BF96451D28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */; };
 		BF96452128BEF2340033A7AD /* UnsplashImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96452028BEF2340033A7AD /* UnsplashImageView.swift */; };
 		BF96452328BEF5200033A7AD /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF96452228BEF5200033A7AD /* API.swift */; };
@@ -26,6 +26,7 @@
 /* Begin PBXFileReference section */
 		BF4EB71728BB4D9C0029861E /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		BF4EB71928BB9C5D0029861E /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
+		BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+MusicMoodClassifierDelegate.swift"; sourceTree = "<group>"; };
 		BF96451C28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MusicMoodClassification.mlmodel; sourceTree = "<group>"; };
 		BF96452028BEF2340033A7AD /* UnsplashImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashImageView.swift; sourceTree = "<group>"; };
 		BF96452228BEF5200033A7AD /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
@@ -40,17 +41,6 @@
 		BFCA6BC328B85D5000EA6261 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		BFF6736828B86CF800B456E2 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFrameworksBuildPhase section */
-		BFCA6BA928B84B3E00EA6261 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BF96451728BDA47E0033A7AD /* UnsplashPhotoPicker in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		BF4EB71B28BBA0400029861E /* AudioSetting */ = {
@@ -117,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				BFCA6BC328B85D5000EA6261 /* MainViewController.swift */,
+				BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */,
 				BF96452028BEF2340033A7AD /* UnsplashImageView.swift */,
 			);
 			path = View;
@@ -130,7 +121,6 @@
 			buildConfigurationList = BFCA6BC028B84B4100EA6261 /* Build configuration list for PBXNativeTarget "MusicInEyes" */;
 			buildPhases = (
 				BFCA6BA828B84B3E00EA6261 /* Sources */,
-				BFCA6BA928B84B3E00EA6261 /* Frameworks */,
 				BFCA6BAA28B84B3E00EA6261 /* Resources */,
 			);
 			buildRules = (
@@ -207,6 +197,7 @@
 				BF96451D28BE0B4E0033A7AD /* MusicMoodClassification.mlmodel in Sources */,
 				BF96452328BEF5200033A7AD /* API.swift in Sources */,
 				BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */,
+				BF9336A228C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift in Sources */,
 				BFCA6BC428B85D5000EA6261 /* MainViewController.swift in Sources */,
 				BFC1B35128B8A06E00DBA954 /* SoundManager.swift in Sources */,
 			);

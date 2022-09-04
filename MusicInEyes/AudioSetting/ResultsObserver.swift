@@ -40,3 +40,4 @@ class ResultsObserver: NSObject, SNResultsObserving {
         print("request completed successfully!")
     }
 }
+
