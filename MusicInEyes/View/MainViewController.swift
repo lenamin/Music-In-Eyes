@@ -73,6 +73,7 @@ class MainViewController: UIViewController {
 
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
+            print("sender.isOn: \(sender.isOn)")
             print("tapped on!")
             sender.setImage(sender.stopImage, for: .normal)
             timer = Timer.scheduledTimer(timeInterval: 3,
@@ -82,7 +83,7 @@ class MainViewController: UIViewController {
                                          repeats: true)
             timer.fire()
         } else {
-            
+            print("!sender.isOn: \(sender.isOn)")
             sender.setImage(sender.playImage, for: .normal)
             print("tapped off")
             stopMonitoring()
@@ -121,7 +122,7 @@ class MainViewController: UIViewController {
     }
     
     func stopMonitoring() {
-        stopMoodAudioEngine()
+        audioEngine.pause()
     }
 }
 
