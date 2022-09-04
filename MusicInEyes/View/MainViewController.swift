@@ -48,7 +48,7 @@ class MainViewController: UIViewController {
 
     public var musicMoodImageView: UnsplashImageView = {
         let imageView = UnsplashImageView()
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -67,6 +67,10 @@ class MainViewController: UIViewController {
         configureConstraints()
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
             print("tapped on!")
@@ -78,10 +82,11 @@ class MainViewController: UIViewController {
                                          repeats: true)
             timer.fire()
         } else {
+            
             sender.setImage(sender.playImage, for: .normal)
+            print("tapped off")
             stopMonitoring()
             musicMoodImageView.image = nil
-            print("tapped off")
         }
     }
     

@@ -8,59 +8,30 @@
 import UIKit
 
 extension MainViewController: MusicMoodClassifierDelegate {
+    
     func displayPredictionResult(identifier: String, confidence: Double) {
         
         let percentConfidence = String(format: "%.2f", confidence)
         print(identifier, percentConfidence)
         
-//        DispatchQueue.main.async {
-//            if identifier != "non-music" {
-//                 self.query = identifier
-//                // print("displayPredictionResult 에 있는 query야 : \(self.query ?? String())")
-//
-//                // self.musicMoodImageView.query = self.query ?? String()
-//
-//                self.timer = Timer.scheduledTimer(withTimeInterval: 3,
-//                                             repeats: true,
-//                                             block: {_ in
-//
-//                    if let query = self.query {
-//                        self.musicMoodImageView.query = query
-//                    }
-//                    self.musicMoodImageView.fetchPhoto()
-//                    self.musicMoodImageView.reloadInputViews()
-//                    print("url: \(self.musicMoodImageView.imageURL)")
-//                    print("successfully fetched!: \(self.musicMoodImageView.query)")
-//                })
-//                self.timer.fire()
-////                self.musicMoodImageView.fetchPhoto()
-////                print("url: \(self.musicMoodImageView.imageURL)")
-////                print("successfully fetched!: \(self.musicMoodImageView.query)")
-//            } else {
-//                print("I'm non-music")
-//            }
-//        }
-        
         DispatchQueue.main.async {
-            
-            self.timer = Timer.scheduledTimer(withTimeInterval: 3,
-                                              repeats: true,
-                                              block: {_ in
-                
-                if identifier != "non-music" {
-                    self.musicMoodImageView.query = identifier
-                    self.musicMoodImageView.fetchPhoto()
-                    print("url: \(self.musicMoodImageView.imageURL)")
-                    print("successfully fetched!: \(self.musicMoodImageView.query)")
-                    self.musicMoodImageView.reloadInputViews()
-                    
-                    
-                }
-                else {
-                    print("I'm non-music")
-                }
-            })
-            self.timer.fire()
+            if identifier != "non-music" {
+                self.musicMoodImageView.query = identifier
+                didChangeValue(forKey: self.musicMoodImageView.query)
+            } else {
+                self.musicMoodImageView.image = nil
+            }
+            self.musicMoodImageView.reloadInputViews()
+        }
+        
+        func didChangeValue(forKey key: String) {
+            super.didChangeValue(forKey: "query")
+            DispatchQueue.main.async {
+                self.musicMoodImageView.fetchPhoto()
+            }
+            print("imageURL in didChangeValue : \(String(describing: musicMoodImageView.imageURL))")
+            print("query in didChangeValue : \(musicMoodImageView.query)")
+            musicMoodImageView.reloadInputViews()
         }
     }
 }
