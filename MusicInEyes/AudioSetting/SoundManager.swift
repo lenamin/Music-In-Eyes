@@ -49,6 +49,16 @@ public func startMoodAudioEngine() {
 }
 
 public func stopMoodAudioEngine() {
-    audioEngine.stop()
-    audioEngine.reset()
+    inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
+    analyzer = SNAudioStreamAnalyzer(format: inputFormat)
+    
+    audioEngine.inputNode.reset()
+    audioEngine.inputNode.removeTap(onBus: 0)
+    
+    do {
+        try audioEngine.stop()
+        
+    } catch {
+        print("error in starting the Audio Engine")
+    }
 }
