@@ -22,6 +22,7 @@ protocol MusicMoodClassifierDelegate {
 }
 
 public func startMoodAudioEngine() {
+    
     inputFormat = audioEngine.inputNode.inputFormat(forBus: 0)
     analyzer = SNAudioStreamAnalyzer(format: inputFormat)
     
@@ -39,6 +40,7 @@ public func startMoodAudioEngine() {
             analyzer.analyze(buffer, atAudioFramePosition: time.sampleTime)
         }
     }
+    audioEngine.prepare()
     
     do {
         try audioEngine.start()
