@@ -21,6 +21,13 @@
 |---|---|
 |<img width="200" alt="image" src="https://user-images.githubusercontent.com/99120199/188604115-2f3b45ed-0b09-4d99-ba76-4df7e9414dac.png">|<img width="200" alt="image" src="https://user-images.githubusercontent.com/99120199/188604187-5a91fdab-f45e-4e40-86f0-4553ee7cd788.png">|
 
+## 주요 기능 
+- 헤드폰 버튼을 누르면 주변의 소리 감지 시작 
+- 음악인 경우 4가지 분위기를 감지 (happy, relax, sad, angry) 
+- 감지한 분위기를 키워드로 unsplash에서 검색하여 해당 이미지를 호출 
+- 음악이 나오지 않는 경우, 다시 안내문구로 변경
+- 분위기가 계속 동일하더라도, 같은 키워드의 random 이미지로 실시간 변경 기능 
+
 ## Skills & Tech Stack
 - UIKit (Codebase)
 - CreateML > Sound Classification 
