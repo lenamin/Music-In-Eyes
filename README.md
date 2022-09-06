@@ -28,6 +28,9 @@
 - 음악이 나오지 않는 경우, 다시 안내문구로 변경
 - 분위기가 계속 동일하더라도, 같은 키워드의 random 이미지로 실시간 변경 기능 
 
+### 추후 추가 예정 기능
+- SoundWave 라이브러리를 이용한 Sound Visualizer 
+
 ## Skills & Tech Stack
 - UIKit (Codebase)
 - CreateML > Sound Classification 
