@@ -19,6 +19,7 @@ extension MainViewController: MusicMoodClassifierDelegate {
                 self.musicMoodImageView.query = identifier
                 didChangeValue(forKey: self.musicMoodImageView.query)
             } else {
+                self.contentLabelImage.image = UIImage(named: "ListeningImage")
                 self.musicMoodImageView.image = nil
             }
             self.musicMoodImageView.reloadInputViews()
