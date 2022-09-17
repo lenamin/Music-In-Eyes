@@ -1,0 +1,24 @@
+{
+    "fileFormatVersion": "1.0.0",
+    "itemInfoEntries": {
+        "37816315-3FE5-46E1-B1F0-DA8C1F9F8F75": {
+            "author": "com.apple.CoreML",
+            "description": "External Metadata Overlay",
+            "name": "Metadata.json",
+            "path": "com.apple.CoreML/Metadata.json"
+        },
+        "5B8CEF48-B021-4166-B64E-9B6DF525321F": {
+            "author": "com.apple.CoreML",
+            "description": "External FeatureDescription Overlay",
+            "name": "FeatureDescriptions.json",
+            "path": "com.apple.CoreML/FeatureDescriptions.json"
+        },
+        "BE7E2702-0C16-4962-B8F8-29EC609E958B": {
+            "author": "com.apple.CoreML",
+            "description": "CoreML Model Specification",
+            "name": "MusicMoodClassification.mlmodel",
+            "path": "com.apple.CoreML/MusicMoodClassification.mlmodel"
+        }
+    },
+    "rootModelIdentifier": "BE7E2702-0C16-4962-B8F8-29EC609E958B"
+}
