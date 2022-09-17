@@ -38,9 +38,9 @@ class MainViewController: UIViewController {
         return view
     }()
     
-    private var contentLabelImage: UIImageView = {
+    public var contentLabelImage: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "content-label")
+        imageView.image = UIImage(named: "InitialImage")
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -88,6 +88,7 @@ class MainViewController: UIViewController {
             print("sender.isOn: \(sender.isOn)")
             print("tapped on!")
             sender.setImage(sender.stopImage, for: .normal)
+            startMoodAudioEngine()
             timer = Timer.scheduledTimer(timeInterval: 3,
                                          target: self,
                                          selector: #selector(startMonitoring),
@@ -95,10 +96,11 @@ class MainViewController: UIViewController {
                                          repeats: true)
             timer.fire()
         } else {
+            timer.invalidate()
             print("!sender.isOn: \(sender.isOn)")
             sender.setImage(sender.playImage, for: .normal)
-            print("tapped off")
             stopMonitoring()
+            print("tapped off")
             musicMoodImageView.image = nil
         }
     }
@@ -133,9 +135,11 @@ class MainViewController: UIViewController {
     @objc func startMonitoring() {
         startMoodAudioEngine()
     }
-    
+
     func stopMonitoring() {
-        audioEngine.pause()
+        if audioEngine.isRunning {
+            stopMoodAudioEngine()
+        }
     }
 }
 
