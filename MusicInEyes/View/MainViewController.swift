@@ -97,11 +97,12 @@ class MainViewController: UIViewController {
             timer.fire()
         } else {
             timer.invalidate()
+            stopMonitoring()
             print("!sender.isOn: \(sender.isOn)")
             sender.setImage(sender.playImage, for: .normal)
-            stopMonitoring()
-            print("tapped off")
             musicMoodImageView.image = nil
+            self.contentLabelImage.image = UIImage(named: "InitialImage")
+            print("tapped off")
         }
     }
     
