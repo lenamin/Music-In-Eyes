@@ -71,6 +71,18 @@ class MainViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // MARK: 1 - Asks user for microphone permission
+        
+        if AVCaptureDevice.authorizationStatus(for: AVMediaType.audio) != .authorized {
+            AVCaptureDevice.requestAccess(for: AVMediaType.audio,
+                                          completionHandler: { (granted: Bool) in
+            })
+        }
+    }
+    
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
             print("sender.isOn: \(sender.isOn)")
@@ -103,6 +115,7 @@ class MainViewController: UIViewController {
             musicMoodImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             musicMoodImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             musicMoodImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            musicMoodImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             musicMoodImageView.bottomAnchor.constraint(equalTo: bottomRectangle.topAnchor),
         
             recordButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
