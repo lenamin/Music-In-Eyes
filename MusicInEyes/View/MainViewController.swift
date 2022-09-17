@@ -109,7 +109,7 @@ class MainViewController: UIViewController {
         NSLayoutConstraint.activate([
             
             contentLabelImage.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentLabelImage.widthAnchor.constraint(equalToConstant:  UIScreen.main.bounds.width * 0.5),
+            contentLabelImage.widthAnchor.constraint(equalToConstant:  UIScreen.main.bounds.width * 0.7),
             contentLabelImage.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             contentLabelImage.bottomAnchor.constraint(equalTo: recordButton.topAnchor, constant: -UIScreen.main.bounds.height * 0.2),
             
