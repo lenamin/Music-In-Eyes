@@ -5,8 +5,8 @@
 <img width="100" alt="image" src="https://user-images.githubusercontent.com/99120199/188601934-07606634-de5d-4207-ad2a-e12a5e9dff4e.png">
 
 **청각장애인의 뮤직 플레이어**<br>
-**Music in Eyes**
-
+**Music in Eyes**<br>
+앱스토어: https://apps.apple.com/kr/app/music-in-eyes/id1643402478
 </div>
 
 <br><br>
