@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  MusicInEyes
+
+  Created by Lena on 2022/09/23.
+  
+*/
+
+"NSMicrophoneUsageDescription" = "Nous devons accéder à votre microphone pour enregistrer";
