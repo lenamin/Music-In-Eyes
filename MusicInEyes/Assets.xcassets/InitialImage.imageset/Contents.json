@@ -1,12 +1,30 @@
 {
   "images" : [
     {
-      "filename" : "InitialImage.png",
+      "filename" : "InitialEnglish.png",
       "idiom" : "universal"
+    },
+    {
+      "filename" : "InitialEnglish 1.png",
+      "idiom" : "universal",
+      "locale" : "en"
+    },
+    {
+      "filename" : "InitialFrench.png",
+      "idiom" : "universal",
+      "locale" : "fr"
+    },
+    {
+      "filename" : "InitialImage 1.png",
+      "idiom" : "universal",
+      "locale" : "ko"
     }
   ],
   "info" : {
     "author" : "xcode",
     "version" : 1
+  },
+  "properties" : {
+    "localizable" : true
   }
 }

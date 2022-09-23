@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF11997728DD753400FC92F8 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF11997928DD753400FC92F8 /* Localizable.strings */; };
+		BF11998028DD778000FC92F8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BF11998228DD778000FC92F8 /* InfoPlist.strings */; };
 		BF4EB71828BB4D9C0029861E /* ToggleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71728BB4D9C0029861E /* ToggleButton.swift */; };
 		BF4EB71A28BB9C5D0029861E /* Microphone.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF4EB71928BB9C5D0029861E /* Microphone.swift */; };
 		BF9336A228C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */; };
@@ -24,6 +26,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BF11997828DD753400FC92F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF11997A28DD755D00FC92F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BF11997B28DD755D00FC92F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF11997C28DD756600FC92F8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		BF11997D28DD756600FC92F8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BF11998128DD778000FC92F8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF11998328DD778100FC92F8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BF11998428DD778200FC92F8 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BF4EB71728BB4D9C0029861E /* ToggleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToggleButton.swift; sourceTree = "<group>"; };
 		BF4EB71928BB9C5D0029861E /* Microphone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Microphone.swift; sourceTree = "<group>"; };
 		BF9336A128C0CF0C002A7EBB /* Main+MusicMoodClassifierDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main+MusicMoodClassifierDelegate.swift"; sourceTree = "<group>"; };
@@ -87,9 +97,11 @@
 				BFCA6BC528B86BF500EA6261 /* Extensions */,
 				BFCA6BAF28B84B3E00EA6261 /* AppDelegate.swift */,
 				BFCA6BB128B84B3E00EA6261 /* SceneDelegate.swift */,
+				BF11997928DD753400FC92F8 /* Localizable.strings */,
 				BFCA6BB828B84B4100EA6261 /* Assets.xcassets */,
 				BFCA6BBA28B84B4100EA6261 /* LaunchScreen.storyboard */,
 				BFCA6BBD28B84B4100EA6261 /* Info.plist */,
+				BF11998228DD778000FC92F8 /* InfoPlist.strings */,
 			);
 			path = MusicInEyes;
 			sourceTree = "<group>";
@@ -156,6 +168,8 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
+				ko,
 			);
 			mainGroup = BFCA6BA328B84B3E00EA6261;
 			packageReferences = (
@@ -175,6 +189,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				BFCA6BBC28B84B4100EA6261 /* LaunchScreen.storyboard in Resources */,
+				BF11998028DD778000FC92F8 /* InfoPlist.strings in Resources */,
+				BF11997728DD753400FC92F8 /* Localizable.strings in Resources */,
 				BFCA6BB928B84B4100EA6261 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -204,10 +220,32 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		BF11997928DD753400FC92F8 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF11997828DD753400FC92F8 /* en */,
+				BF11997B28DD755D00FC92F8 /* fr */,
+				BF11997D28DD756600FC92F8 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		BF11998228DD778000FC92F8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BF11998128DD778000FC92F8 /* en */,
+				BF11998328DD778100FC92F8 /* fr */,
+				BF11998428DD778200FC92F8 /* ko */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		BFCA6BBA28B84B4100EA6261 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BFCA6BBB28B84B4100EA6261 /* Base */,
+				BF11997A28DD755D00FC92F8 /* fr */,
+				BF11997C28DD756600FC92F8 /* ko */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -219,6 +257,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
@@ -279,6 +318,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
