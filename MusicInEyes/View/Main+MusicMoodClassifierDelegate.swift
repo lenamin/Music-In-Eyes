@@ -18,7 +18,9 @@ extension MainViewController: MusicMoodClassifierDelegate {
             if identifier != "non-music" {
                 self.musicMoodImageView.query = identifier
                 didChangeValue(forKey: self.musicMoodImageView.query)
+
             } else {
+                self.identifierLable.text = nil
                 self.contentLabelImage.image = UIImage(named: "ListeningImage")
                 self.musicMoodImageView.image = nil
             }
@@ -29,7 +31,9 @@ extension MainViewController: MusicMoodClassifierDelegate {
             super.didChangeValue(forKey: "query")
             DispatchQueue.main.async {
                 self.musicMoodImageView.fetchPhoto()
+                self.identifierLable.text = self.musicMoodImageView.query
             }
+            
             print("imageURL in didChangeValue : \(String(describing: musicMoodImageView.imageURL))")
             print("query in didChangeValue : \(musicMoodImageView.query)")
             musicMoodImageView.reloadInputViews()

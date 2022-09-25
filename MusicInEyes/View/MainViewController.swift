@@ -30,6 +30,14 @@ class MainViewController: UIViewController {
         return toggleButton
     }()
     
+    public var identifierLable: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 50, weight: .bold)
+        label.textColor = .white
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    
     private var bottomRectangle: UIView = {
         let view = UIView()
         view.backgroundColor = .customLightGray
@@ -63,6 +71,7 @@ class MainViewController: UIViewController {
         resultsObserver.moodDelegate = self
         view.backgroundColor = .white
         [bottomRectangle, contentLabelImage, musicMoodImageView].forEach { view.addSubview($0) }
+        musicMoodImageView.addSubview(identifierLable)
         bottomRectangle.addSubview(recordButton)
         configureConstraints()
     }
@@ -85,10 +94,8 @@ class MainViewController: UIViewController {
     
     @objc func didToggleButton(_ sender: ToggleButton) {
         if sender.isOn {
-            print("sender.isOn: \(sender.isOn)")
             print("tapped on!")
             sender.setImage(sender.stopImage, for: .normal)
-            startMoodAudioEngine()
             timer = Timer.scheduledTimer(timeInterval: 3,
                                          target: self,
                                          selector: #selector(startMonitoring),
@@ -98,9 +105,9 @@ class MainViewController: UIViewController {
         } else {
             timer.invalidate()
             stopMonitoring()
-            print("!sender.isOn: \(sender.isOn)")
             sender.setImage(sender.playImage, for: .normal)
             musicMoodImageView.image = nil
+            identifierLable.text = nil
             self.contentLabelImage.image = UIImage(named: "InitialImage")
             print("tapped off")
         }
@@ -121,6 +128,9 @@ class MainViewController: UIViewController {
             musicMoodImageView.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
             musicMoodImageView.bottomAnchor.constraint(equalTo: bottomRectangle.topAnchor),
         
+            identifierLable.centerXAnchor.constraint(equalTo: musicMoodImageView.centerXAnchor),
+            identifierLable.centerYAnchor.constraint(equalTo: musicMoodImageView.centerYAnchor),
+            
             recordButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
