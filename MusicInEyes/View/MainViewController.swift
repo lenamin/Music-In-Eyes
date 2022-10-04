@@ -58,8 +58,14 @@ class MainViewController: UIViewController {
         let imageView = UnsplashImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
+    }()
+    
+    public var photoByName: UILabel = {
+        let label = UILabel()
+        return label
     }()
     
     override func viewDidLoad() {
@@ -68,11 +74,12 @@ class MainViewController: UIViewController {
         navigationController?.navigationBar.backgroundColor = .clear
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationBar.tintColor = .customBlack
-
+        
         resultsObserver.moodDelegate = self
         view.backgroundColor = .white
-        [contentLabelImage, musicMoodImageView, recordButton].forEach { view.addSubview($0) }
+        [contentLabelImage, musicMoodImageView, bottomRectangle].forEach { view.addSubview($0) }
         musicMoodImageView.addSubview(identifierLable)
+        bottomRectangle.addSubview(recordButton)
         configureConstraints()
     }
     
@@ -109,6 +116,7 @@ class MainViewController: UIViewController {
             musicMoodImageView.image = nil
             identifierLable.text = nil
             self.contentLabelImage.image = UIImage(named: "InitialImage")
+            self.navigationController?.navigationBar.isHidden = false
             print("tapped off")
         }
     }
@@ -136,6 +144,10 @@ class MainViewController: UIViewController {
             recordButton.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.2),
             recordButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             recordButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -UIScreen.main.bounds.height / 22)
+            
+//            bottomRectangle.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width),
+//            bottomRectangle.heightAnchor.constraint(equalToConstant: UIScreen.main.bounds.height * 0.15),
+//            bottomRectangle.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
     }
     
