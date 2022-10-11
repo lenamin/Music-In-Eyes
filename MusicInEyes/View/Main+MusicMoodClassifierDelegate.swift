@@ -20,6 +20,7 @@ extension MainViewController: MusicMoodClassifierDelegate {
                 didChangeValue(forKey: self.musicMoodImageView.query)
 
             } else {
+                self.navigationController?.navigationBar.isHidden = false
                 self.identifierLable.text = nil
                 self.contentLabelImage.image = UIImage(named: "ListeningImage")
                 self.musicMoodImageView.image = nil
@@ -32,6 +33,7 @@ extension MainViewController: MusicMoodClassifierDelegate {
             DispatchQueue.main.async {
                 self.musicMoodImageView.fetchPhoto()
                 self.identifierLable.text = self.musicMoodImageView.query
+                self.navigationController?.navigationBar.isHidden = true
             }
             
             print("imageURL in didChangeValue : \(String(describing: musicMoodImageView.imageURL))")
