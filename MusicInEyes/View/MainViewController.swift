@@ -77,9 +77,8 @@ class MainViewController: UIViewController {
         
         resultsObserver.moodDelegate = self
         view.backgroundColor = .white
-        [contentLabelImage, musicMoodImageView, bottomRectangle].forEach { view.addSubview($0) }
+        [contentLabelImage, musicMoodImageView, recordButton].forEach { view.addSubview($0) }
         musicMoodImageView.addSubview(identifierLable)
-        bottomRectangle.addSubview(recordButton)
         configureConstraints()
     }
     
